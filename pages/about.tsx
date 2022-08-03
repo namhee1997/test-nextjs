@@ -1,4 +1,4 @@
-import Header from '@/components/common/header'
+import { Header } from '@/components/common/header'
 import { AdminLayout } from '@/components/layout'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
@@ -7,7 +7,7 @@ import { Box, Typography } from '@mui/material'
 
 // const Header = dynamic(() => import('@/components/common/header'), { ssr: false })
 
-export interface AboutPageProps {}
+export interface AboutPageProps { }
 
 export default function AboutPage(props: AboutPageProps) {
 	const [postList, setPostList] = useState([])
@@ -18,12 +18,12 @@ export default function AboutPage(props: AboutPageProps) {
 
 	useEffect(() => {
 		if (!page) return
-		;(async () => {
-			const response = await fetch(`https://js-post-api.herokuapp.com/api/posts?_page=${page}`)
-			const data = await response.json()
+			; (async () => {
+				const response = await fetch(`https://js-post-api.herokuapp.com/api/posts?_page=${page}`)
+				const data = await response.json()
 
-			setPostList(data.data)
-		})()
+				setPostList(data.data)
+			})()
 	}, [page])
 
 	function handleNextClick() {
